@@ -1,0 +1,35 @@
+{
+  "name": "liribot",
+  "version": "1.0.0",
+  "description": " LIRI is a Language Interpretation and Recognition Interface",
+  "main": "liri.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OtakuToronto/liribot.git"
+  },
+  "keywords": [
+    "LIRI",
+    "Sportify",
+    "Bands",
+    "in",
+    "town",
+    "OMDB"
+  ],
+  "author": "Holland Gronau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OtakuToronto/liribot/issues"
+  },
+  "homepage": "https://github.com/OtakuToronto/liribot#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bandsintown": "^1.0.1",
+    "dotenv": "^7.0.0",
+    "moment": "^2.24.0",
+    "node-spotify-api": "^1.0.7",
+    "omdb": "^0.8.0"
+  }
+}
