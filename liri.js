@@ -17,7 +17,10 @@ for (var i = 4; i < process.argv.length; i++) {
     input += '+' + process.argv[i];
 }
 // Fetch Spotify Keys
-var spotify = new Spotify(keys.spotify);
+var spotify = new Spotify({
+    id: keys.spotify.id,
+    secret: keys.spotify.secret
+});
 
 // Writes to the log.txt file
 var getArtistNames = function (artist) {
@@ -25,22 +28,14 @@ var getArtistNames = function (artist) {
 };
 
 // Function for running a Spotify search - Command is spotify-this-song
-var getSpotify = function (songName) {
+var getSpotify = function(songName) {
+    songName = input
     if (songName === undefined) {
         songName = "The Sign";
     }
 
-    spotify.search(
-        {
-            type: "track",
-            query: command
-        },
-        function (err, data) {
-            if (err) {
-                console.log("Error occurred: " + err);
-                return;
-            }
-
+    spotify.search({ type: 'track', query: songName })
+        .then(function(data){
             var songs = data.tracks.items;
 
             for (var i = 0; i < songs.length; i++) {
@@ -51,8 +46,10 @@ var getSpotify = function (songName) {
                 console.log("album: " + songs[i].album.name);
                 console.log("-----------------------------------");
             }
-        }
-    );
+        })
+        .catch(function(err){
+            console.log(err)
+        })
 };
 
 function mySwitch(command) {
@@ -74,7 +71,11 @@ function mySwitch(command) {
         case "do-what-it-says":
             doWhat();
             break;
+        default:
+            console.log(keys)
+            return
     }
+
 
 //Bands in town - command: concert-this
 function getConcert(){
