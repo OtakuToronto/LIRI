@@ -8,7 +8,6 @@ var bandsintown = require('bandsintown');
 // //NPM module used to write output to console and log.txt simulatneously
 // var log = require('simple-node-logger').createSimpleFileLogger(filename);
 // log.setLevel('all');
-
 var command = process.argv[2];
 var input = process.argv[3];
 
